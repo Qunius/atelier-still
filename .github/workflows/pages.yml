@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
@@ -18,20 +18,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Import verified independent source once
-        shell: bash
-        run: |
-          if [ ! -f package.json ]; then
-            curl --fail --location --silent --show-error 'https://d2ol7oe51mr4n9.cloudfront.net/user_3EusXKR4DTTtUNchuBKdricj13W/f1c8d225-8cf7-4ad3-9de2-9bb0f33ba831.zip' --output /tmp/atelier-still.zip
-            echo 'ecc1ec6f806a012ea563431e9bf897a12cb07a5ba7c0636c94e0c49340712578  /tmp/atelier-still.zip' | sha256sum --check
-            unzip -q /tmp/atelier-still.zip -d /tmp/atelier-still-import
-            rsync -a --exclude='.github/' /tmp/atelier-still-import/ ./
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add .
-            git commit -m 'Import independent Atelier Still source and media'
-            git push origin HEAD:main
-          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -41,8 +27,6 @@ jobs:
         env:
           BASE_PATH: /atelier-still/
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

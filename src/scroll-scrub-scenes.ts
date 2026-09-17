@@ -1,0 +1,3 @@
+import type {ScrollScrubScene,ScrollScrubTheme} from "@/components/scroll-scrub/scroll-scrub";
+export const scrollScrubTheme:ScrollScrubTheme={accent:"#d96e2a",background:"#11110f",ink:"#e8e3da",muted:"#e8e3da"};
+export const scrollScrubScenes:ScrollScrubScene[]=[{id:"timber-core-film",label:"Timber Core",title:"Timber Core.",body:"Warmth held within a concrete frame.",clip:import.meta.env.BASE_URL+"assets/world/timber.mp4",poster:import.meta.env.BASE_URL+"assets/world/timber-poster.webp",mobileClip:import.meta.env.BASE_URL+"assets/world/timber-mobile.mp4",mobilePoster:import.meta.env.BASE_URL+"assets/world/timber-mobile-poster.webp",scroll:2.4,linger:.15,objectPosition:"50% 50%",mobileObjectPosition:"55% 50%"}];

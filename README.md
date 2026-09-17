@@ -12,7 +12,7 @@ Use Node 22.12 or newer.
 The production website is written to dist/. Host that folder on a static host. The relative base works under a GitHub Pages project path; BASE_PATH can override it at build time.
 
 ## Privacy
-Keep this GitHub repository private. Publishing the dist folder creates a separate website and does not inherit repository privacy. No website deployment workflow is enabled.
+This repository is public. GitHub Pages publishes the website through .github/workflows/pages.yml. Enable GitHub Actions under Settings > Pages to activate hosting.
 robots.txt and noindex request that search engines avoid the website; they are not access controls.
 
 ## Content
